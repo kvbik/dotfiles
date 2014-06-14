@@ -1,16 +1,11 @@
 # install basic packages
 # ~~~~~~~~~~~~~~~~~~~~~~
-- update pacman cache
+- name: update pacman cache
   pacman: update_cache=yes
   tags: packages
 
-{% for p in [
-  'mesa-libgl', 'gvim',
-  'iw', 'links', 'wget',
-  'parted', 'grub',
-  'wpa_supplicant', 'openssh',
-] %}
-- install package {{ p }}
-  pacman: name={{ p }} state=present
+- name: install basic packages
+  pacman: name={{ item }} state=present
   tags: packages
-{% endofor %}
+  with_items: pkgs
+
