@@ -20,4 +20,5 @@ pkgs:
   - xorg-xclock
   - xterm
   - xorg-xinit
+  - dwm
 
